@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import KakeiboFormView from './KakeiboFormView';
+import NextTargetFormView from './NextTargetFormView';
 
-const KakeiboForm = () => {
+const NextTargetForm = () => {
   const [formData, setFormData] = useState({
     date: '',
     category: '',
@@ -18,7 +18,7 @@ const KakeiboForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:8080/payments/new', {
+    fetch('http://localhost:8080/payments/new', { // URL変える必要あり
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ const KakeiboForm = () => {
   };
 
   return (
-    <KakeiboFormView
+    <NextTargetFormView
       formData={formData}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
@@ -44,4 +44,4 @@ const KakeiboForm = () => {
   );
 };
 
-export default KakeiboForm;
+export default NextTargetForm;

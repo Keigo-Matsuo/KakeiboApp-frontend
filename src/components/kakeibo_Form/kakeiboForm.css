@@ -1,0 +1,92 @@
+/*基本的にファイルをそのままぶち込んでもらえれば動きます。*/
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&family=RocknRoll+One&family=Walter+Turncoat&family=Yusei+Magic&family=Zen+Kurenaido&display=swap');
+
+div{
+    font-family: "Zen Kurenaido", sans-serif;
+}
+
+h2{
+    text-align: center;
+    font-weight: 1000;
+    font-size: 200%;
+}
+
+.price{
+    text-align: center;
+}
+
+.price label{
+    font-size: 1.5rem;
+    margin-right:10px;
+    font-weight: 600;
+}
+
+.price input{
+    font-family: "Zen Kurenaido", sans-serif;
+    font-weight: 600;
+    width: 50%;
+    height: 50px;
+    font-size: 1.5rem;
+    border:5px #FFBD3E solid;
+    outline: none;
+    border-radius: 20px;
+    margin-right: 3%;
+    text-align: right;
+}
+
+.content{
+    display:flex;
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.content label{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.content input{
+    font-family: "Zen Kurenaido", sans-serif;
+    font-weight: 600;
+    height: 40px;
+    border:3px #f9d8ad solid;
+    outline: none;
+    border-radius: 10px;
+}
+
+.date input{
+    margin-right: 30px;
+}
+
+.memo{
+    text-align: center;
+}
+
+.memo p{
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.memo textarea{
+    width: 70%;
+    height: 200px;
+    font-size: 1rem;
+    background-color: #FFF7E9;
+    border-radius: 15px;
+    border:2px #f9d8ad solid;
+    outline: none;
+}
+
+.submit{
+    font-family: "Zen Kurenaido", sans-serif;
+    font-weight: 1000;
+    background-color: #FFBD3E;
+    width:25%;
+    size: 200%;
+    padding:15px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+}
