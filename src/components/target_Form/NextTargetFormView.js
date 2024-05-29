@@ -11,7 +11,7 @@ const nextTargetFormView = ({ formData, handleChange, handleSubmit }) => {
 
     <div>
       <h2>来月の目標</h2>
-      {/* データベースの項目変える必要あり */}
+      <p>データベースの項目（入力項目）変える必要あり</p>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Date:</label>

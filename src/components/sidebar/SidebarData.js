@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const SidebarData = [
     {
         title: "ホーム",
@@ -16,5 +14,15 @@ export const SidebarData = [
     {
         title: "設定",
         link: "/settings",
+        subMenu: [
+            {
+                title: "カテゴリの登録",
+                link: "/settings/category",
+            },
+            {
+                title: "ユーザー設定",
+                link: "/settings/user",
+            }
+        ]
     },
-]
+];

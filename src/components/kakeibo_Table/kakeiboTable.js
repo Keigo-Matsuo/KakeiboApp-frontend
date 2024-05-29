@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import KakeiboTableRow from './KakeiboTableRow';
 import './kakeibo.css';
 
-function KakeiboTable() {
-  const [kakeiboData, setKakeiboData] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:8080/api/kakeibo')
-      .then(response => response.json())
-      .then(data => setKakeiboData(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-
+function KakeiboTable({ data }) {
   return (
-    // テーブル構成をバックエンドと合わせる必要あり！！
-    <table className='kakeibo'> 
+    // テーブル構成をバックエンドと合わせる必要あり
+    <table className='kakeibo'>
       <thead>
         <tr>
           <th>ID</th>
@@ -25,7 +16,7 @@ function KakeiboTable() {
         </tr>
       </thead>
       <tbody>
-        {kakeiboData.map((item) => (
+        {data.map((item) => (
           <KakeiboTableRow key={item.id} item={item} />
         ))}
       </tbody>

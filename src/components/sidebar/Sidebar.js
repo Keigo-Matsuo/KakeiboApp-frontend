@@ -1,21 +1,72 @@
-import React from 'react';
+// import React from 'react';
+// import { SidebarData } from './SidebarData';
+// import './Sidebar.css';
+
+// function Sidebar() {
+//   return (
+//     <div className='Sidebar'>
+//       <ul className='SidebarList'>
+//         {SidebarData.map((value, key) => {
+//           return (
+//             <li
+//               key={key}
+//               id={window.location.pathname == value.link ? "active" : ""}
+//               className='row'
+//               onClick={() => {
+//                 window.location.pathname = value.link;
+//             }}>
+//               <div id="title">{value.title}</div>
+//             </li>
+//           )
+//         })}
+//       </ul>
+//     </div>
+//   )
+// }
+
+// export default Sidebar
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Sidebar.css';
 
 function Sidebar() {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const toggleSettings = () => {
+    setIsSettingsOpen(!isSettingsOpen);
+  };
+
   return (
     <div className='Sidebar'>
       <ul className='SidebarList'>
         {SidebarData.map((value, key) => {
           return (
-            <li
-              key={key}
-              id={window.location.pathname == value.link ? "active" : ""}
-              className='row'
-              onClick={() => {
-                window.location.pathname = value.link;
-            }}>
-              <div id="title">{value.title}</div>
+            <li key={key} id={window.location.pathname == value.link ? "active" : ""}>
+              <div
+                className={`row ${value.subMenu && value.subMenu.length > 0 && isSettingsOpen ? 'active' : ''}`}
+                  onClick={() => {
+                      if (value.subMenu && value.subMenu.length > 0) {
+                          toggleSettings();
+                      } else {
+                          window.location.pathname = value.link;
+                      }
+                  }}
+              >
+              
+                <div id="title">{value.title}</div>
+              </div>
+
+              {value.subMenu && value.subMenu.length > 0 && isSettingsOpen && (
+                <ul>
+                  {value.subMenu.map((subValue, subKey) => (
+                    <li key={subKey}>
+                      <Link to={subValue.link}>{subValue.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           )
         })}
@@ -24,4 +75,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default Sidebar;

@@ -1,28 +1,3 @@
-// import { Pie } from 'react-chartjs-2';
-// import { Chart as ChartJS, 
-//     Tooltip,
-//     Legend,
-//     ArcElement,
-// } from 'chart.js';
-// import pieChartData from './PIE_DATA.js';  // default exportとしてインポート
-
-// import 'chartjs-plugin-datalabels';
-
-// ChartJS.register(
-//     Tooltip,
-//     Legend,
-//     ArcElement,
-// );
-
-// export const PieGraph = () => {
-//     const options = {};
-
-//     console.log(pieChartData);
-
-//     return <Pie options={options} data={pieChartData} />;
-// };
-
-
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, Tooltip, Legend, ArcElement } from 'chart.js';
@@ -30,18 +5,15 @@ import 'chartjs-plugin-datalabels';
 
 ChartJS.register(Tooltip, Legend, ArcElement);
 
-export const PieGraph = () => {
+export const PieGraph = ({ data }) => {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/kakeibo')
-      .then(response => response.json())
-      .then(data => {
-        const aggregatedData = aggregateData(data);
-        setChartData(aggregatedData);
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+    if (data) {
+      const aggregatedData = aggregateData(data);
+      setChartData(aggregatedData);
+    }
+  }, [data]);
 
   const aggregateData = (data) => {
     const categoryMap = {};
@@ -54,12 +26,7 @@ export const PieGraph = () => {
       }
     });
 
-    // カテゴリごとに金額が大きい順にソート
     const sortedCategories = Object.entries(categoryMap).sort(([, a], [, b]) => b - a);
-
-    console.log(typeof sortedCategories);
-
-    // ソートされた配列からcategoryとpriceを抽出
     const labels = sortedCategories.map(([category]) => category);
     const prices = sortedCategories.map(([, price]) => price);
 
