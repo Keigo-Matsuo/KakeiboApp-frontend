@@ -28,7 +28,7 @@ const KakeiboForm = () => {
       .then(response => response.json())
       .then(data => {
         console.log('Data submitted successfully', data);
-        navigate('/');
+        navigate('/home');
       })
       .catch(error => {
         console.error('Error submitting data', error);

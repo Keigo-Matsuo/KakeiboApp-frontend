@@ -6,7 +6,8 @@ export const useKakeiboData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/kakeibo');
+        // const response = await fetch('http://localhost:8080/api/kakeibo');
+        const response = await fetch('http://localhost:8080/nextTarget');
         const result = await response.json();
         setData(result);
       } catch (error) {

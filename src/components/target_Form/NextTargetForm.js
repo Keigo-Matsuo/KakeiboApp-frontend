@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NextTargetFormView from './NextTargetFormView';
+import { useKakeiboData } from '../../hooks/useKakeiboData';
 
 const NextTargetForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const NextTargetForm = () => {
   });
 
   const navigate = useNavigate();
+  const kakeiboData = useKakeiboData();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +30,7 @@ const NextTargetForm = () => {
       .then(response => response.json())
       .then(data => {
         console.log('Data submitted successfully', data);
-        navigate('/');
+        navigate('/home');
       })
       .catch(error => {
         console.error('Error submitting data', error);
@@ -40,6 +42,7 @@ const NextTargetForm = () => {
       formData={formData}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      kakeiboData={kakeiboData}
     />
   );
 };

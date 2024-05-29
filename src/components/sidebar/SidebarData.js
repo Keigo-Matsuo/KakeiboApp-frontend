@@ -1,7 +1,7 @@
 export const SidebarData = [
     {
         title: "ホーム",
-        link: "/",
+        link: "/home",
     },
     {
         title: "記録する",
@@ -24,5 +24,9 @@ export const SidebarData = [
                 link: "/settings/user",
             }
         ]
+    },
+    {
+        title: "ログアウト",
+        link: "/",
     },
 ];
