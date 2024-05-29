@@ -20,7 +20,7 @@ const NextTargetForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:8080/payments/new', { // URL変える必要あり
+    fetch('http://localhost:8080/api/payments/new', { // URL変える必要あり
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -29,10 +29,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
+import { useAuth } from '../../context/AuthContext';
 import './Sidebar.css';
 
 function Sidebar() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const {user, logout} = useAuth();
 
   const toggleSettings = () => {
     setIsSettingsOpen(!isSettingsOpen);
@@ -56,13 +58,14 @@ function Sidebar() {
               >
               
                 <div id="title">{value.title}</div>
+
               </div>
 
               {value.subMenu && value.subMenu.length > 0 && isSettingsOpen && (
                 <ul>
                   {value.subMenu.map((subValue, subKey) => (
-                    <li key={subKey}>
-                      <Link to={subValue.link}>{subValue.title}</Link>
+                    <li key={subKey} className={`row ${value.subMenu && value.subMenu.length > 0 && isSettingsOpen ? 'active' : ''}`}>
+                      <Link to={subValue.link} id="sub-title">{subValue.title}</Link>
                     </li>
                   ))}
                 </ul>
@@ -70,6 +73,9 @@ function Sidebar() {
             </li>
           )
         })}
+        <li>
+          <p id="title" className='row' onClick={logout}>ログアウト</p>
+        </li>
       </ul>
     </div>
   )

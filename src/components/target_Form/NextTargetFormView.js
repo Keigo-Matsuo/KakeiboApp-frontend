@@ -4,7 +4,7 @@ import { LineGraph } from '../graph/Line';
 const NextTargetFormView = ({ formData, handleChange, handleSubmit, kakeiboData }) => {
   return (
     <>
-      <div className="App" style={{ width: '50%' }}>
+      <div className="App" style={{  width: '60%' }}>
         <LineGraph key={JSON.stringify(kakeiboData)} data={kakeiboData} />
       </div>
 

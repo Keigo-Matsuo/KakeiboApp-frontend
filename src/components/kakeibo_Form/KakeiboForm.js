@@ -18,7 +18,7 @@ const KakeiboForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:8080/payments/new', {
+    fetch('http://localhost:8080/api/payments/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

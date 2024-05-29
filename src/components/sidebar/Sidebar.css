@@ -25,7 +25,8 @@
     background-color: rgb(235, 135, 21);
 }
 
-.SidebarList .row {
+/* .SidebarList .row */
+#title, #sub-title {
     width: 100%;
     height: 60px;
     /* color: white; */
@@ -35,7 +36,13 @@
     align-items: center; */
 }
 
-.SidebarList .row:hover {
+#sub-title {
+    text-decoration: none;
+    color: black;
+}
+
+.SidebarList .row:hover,
+.sub-title:hover {
     cursor: pointer;
     background-color: rgb(235, 135, 21,0.4);
 }

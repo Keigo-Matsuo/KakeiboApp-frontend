@@ -24,9 +24,5 @@ export const SidebarData = [
                 link: "/settings/user",
             }
         ]
-    },
-    {
-        title: "ログアウト",
-        link: "/",
-    },
+    }
 ];
