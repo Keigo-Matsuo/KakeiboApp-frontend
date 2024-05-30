@@ -17,13 +17,13 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     // アカウント登録
-    const register = async (email, name, password) => {
+    const register = async (email, username, password) => {
         const response = await fetch('http://localhost:8080/api/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, name, password })
+            body: JSON.stringify({ email, username, password })
         });
         const data = await response.json();
         setUser(data);
@@ -48,11 +48,6 @@ export const AuthProvider = ({ children }) => {
             
             window.location.href = '/home';
 
-            // setTimeout(() => {
-            //     if (localStorage.getItem('isLoggedIn')) {
-            //         navigate('/home'); // ログイン成功後にリダイレクト
-            //     }
-            // }, 1000);
         } else {
             alert('Login failed');
         }

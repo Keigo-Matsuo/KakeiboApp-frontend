@@ -45,8 +45,6 @@
 // **********************************************************************
 
 
-
-// src/components/graph/Line.js
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale } from 'chart.js';
@@ -90,13 +88,13 @@ export const LineGraph = ({ data }) => {
       if (!dateMap[date]) {
         dateMap[date] = {};
       }
-      if (!dateMap[date][item.category]) {
-        dateMap[date][item.category] = 0;
+      if (!dateMap[date][item.category.name]) {
+        dateMap[date][item.category.name] = 0;
       }
-      dateMap[date][item.category] += item.price;
+      dateMap[date][item.category.name] += item.amount;
     });
 
-    const categories = Array.from(new Set(data.map(item => item.category)));
+    const categories = Array.from(new Set(data.map(item => item.category.name)));
 
     const datasets = categories.map(category => ({
       label: category,
@@ -128,7 +126,7 @@ export const LineGraph = ({ data }) => {
       },
       title: {
         display: true,
-        text: 'Category-wise Price Over Time',
+        text: 'Category-wise Price Trend for This Month',
       },
     },
     scales: {
@@ -156,110 +154,3 @@ export const LineGraph = ({ data }) => {
 
   return chartData ? <Line options={options} data={chartData} /> : <div>Loading...</div>;
 };
-
-// **********************************************************************
-
-// import { Line } from 'react-chartjs-2';
-// import { Chart as ChartJS, 
-//     CategoryScale,
-//     LinearScale,
-//     PointElement,
-//     LineElement,
-//     Title,
-//     Tooltip,
-//     Legend,
-// } from 'chart.js';
-// import 'chartjs-adapter-date-fns';
-// import { useKakeiboData } from '../../hooks/useKakeiboData';
-
-// ChartJS.register(
-//     CategoryScale,
-//     LinearScale,
-//     PointElement,
-//     LineElement,
-//     Title,
-//     Tooltip,
-//     Legend,
-// );
-
-// export const LineGraph = () => {
-//     const data = useKakeiboData();
-
-//     const getDatesForCurrentMonth = () => {
-//         const now = new Date();
-//         const year = now.getFullYear();
-//         const month = (now.getMonth() + 1).toString().padStart(2, '0'); // 現在の月を取得（1-12）
-//         const daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate(); // 現在の月の日数を取得
-//         const dates = [];
-//         for (let i = 1; i <= daysInMonth; i++) {
-//             dates.push(`${year}-${month}-${i.toString().padStart(2, '0')}`);
-//         }
-//         return dates;
-//     };
-
-//     const formatChartData = (data) => {
-//         const dates = getDatesForCurrentMonth();
-//         const categoryMap = {};
-
-//         data.forEach(item => {
-//             const date = item.date.split('T')[0]; // 日付の形式が "YYYY-MM-DD" であることを前提
-//             if (!categoryMap[item.category]) {
-//                 categoryMap[item.category] = Array(dates.length).fill(0); // 日付ごとに初期値0を設定
-//             }
-//             const dateIndex = dates.indexOf(date);
-//             if (dateIndex !== -1) {
-//                 categoryMap[item.category][dateIndex] += item.price;
-//             }
-//         });
-
-//         const datasets = Object.entries(categoryMap).map(([category, prices]) => ({
-//             label: category,
-//             data: prices,
-//             borderColor: getRandomColor(),
-//             fill: false,
-//         }));
-
-//         return {
-//             labels: dates,
-//             datasets: datasets,
-//         };
-//     };
-
-//     const getRandomColor = () => {
-//         const letters = '0123456789ABCDEF';
-//         let color = '#';
-//         for (let i = 0; i < 6; i++) {
-//             color += letters[Math.floor(Math.random() * 16)];
-//         }
-//         return color;
-//     };
-
-//     const chartData = formatChartData(data);
-
-//     const options = {
-//         responsive: true,
-//         plugins: {
-//             legend: {
-//                 position: "bottom",
-//             },
-//             title: {
-//                 display: true,
-//                 text: "Category-wise Price per Day",
-//             },
-//         },
-//         scales: {
-//             x: {
-//                 type: 'time',
-//                 time: {
-//                     unit: 'day',
-//                     tooltipFormat: 'yyyy-MM-dd',
-//                     displayFormats: {
-//                         day: 'yyyy-MM-dd',
-//                     },
-//                 },
-//             },
-//         },
-//     };
-
-//     return <Line options={options} data={chartData} />;
-// };

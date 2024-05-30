@@ -12,7 +12,7 @@ const Top = () => {
   // 全データからカテゴリを抽出
   const categories = useMemo(() => {
     const categorySet = new Set();
-    kakeiboData.forEach(item => categorySet.add(item.category));
+    kakeiboData.forEach(item => categorySet.add(item.category.name));
     return Array.from(categorySet);
   }, [kakeiboData]);
 
@@ -22,7 +22,7 @@ const Top = () => {
       setFilteredData(kakeiboData);
     } else {
       setFilteredData(
-        kakeiboData.filter(item => selectedCategories.includes(item.category))
+        kakeiboData.filter(item => selectedCategories.includes(item.category.name))
       );
     }
   }, [selectedCategories, kakeiboData]);

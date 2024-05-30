@@ -20,9 +20,9 @@ export const PieGraph = ({ data }) => {
 
     data.forEach(item => {
       if (categoryMap[item.category]) {
-        categoryMap[item.category] += item.price;
+        categoryMap[item.category.name] += item.amount;
       } else {
-        categoryMap[item.category] = item.price;
+        categoryMap[item.category.name] = item.amount;
       }
     });
 

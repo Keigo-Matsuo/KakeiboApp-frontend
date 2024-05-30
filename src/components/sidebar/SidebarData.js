@@ -24,5 +24,19 @@ export const SidebarData = [
                 link: "/settings/user",
             }
         ]
-    }
+    },
+    // {
+    //     title: "グループ選択",
+    //     link: "/group",
+    //     subMenu: [
+    //         {
+    //             title: "グループ１",
+    //             link: "/group/1",
+    //         },
+    //         {
+    //             title: "グループ２",
+    //             link: "/group/2",
+    //         }
+    //     ]
+    // }
 ];

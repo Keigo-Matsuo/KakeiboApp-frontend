@@ -1,16 +1,16 @@
+// src/components/KakeiboFormView.js
+
 import React from 'react';
 import './kakeiboForm.css';
 
-const KakeiboFormView = ({ formData, handleChange, handleSubmit }) => {
+const KakeiboFormView = ({ formData, categories, handleChange, handleSubmit }) => {
   return (
     <div>
       <h2>記録する</h2>
-      <p>データベースの項目（入力項目）変える必要あり</p>
       <form onSubmit={handleSubmit}>
-
         <div className='price'>
           <label>Price:</label>
-          <input type="number" name="price" value={formData.price} onChange={handleChange} required />
+          <input type="number" name="amount" value={formData.amount} onChange={handleChange} required />
         </div>
 
         <div className='content'>
@@ -21,10 +21,25 @@ const KakeiboFormView = ({ formData, handleChange, handleSubmit }) => {
 
           <div className='category'>
             <label>Category:</label>
-            <input type="text" name="category" value={formData.category} onChange={handleChange} required />
+            <select
+              name="categoryId"
+              value={formData.categoryId}
+              onChange={handleChange}
+              required
+            >
+              <option value="">選択してください</option>
+              {categories.map(category => (
+                <option key={category.categoryId} value={category.categoryId}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <a href='/settings/category'>カテゴリの新規追加はこちら</a>
           </div>
         </div>
-        
+
         <div className='memo'>
           <p>memo:</p>
           <textarea name="memo" value={formData.memo} onChange={handleChange} />
