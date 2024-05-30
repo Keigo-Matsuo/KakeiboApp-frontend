@@ -31,3 +31,20 @@ h2{
     outline: none;
     border-radius: 20px;
 }
+
+
+.category-table{
+    margin: auto;
+    font-family: "Zen Kurenaido", sans-serif;
+    font-size: 1.25rem;
+    background-color: #FFF7E9;
+    width: 100%;
+}
+
+thead{
+    background-color: #f9d8ad;
+}
+
+tbody tr td {
+    text-align: center;
+}
