@@ -90,13 +90,13 @@ export const LineGraph = ({ data }) => {
       if (!dateMap[date]) {
         dateMap[date] = {};
       }
-      if (!dateMap[date][item.category.name]) {
-        dateMap[date][item.category.name] = 0;
+      if (!dateMap[date][item.category]) {
+        dateMap[date][item.category] = 0;
       }
-      dateMap[date][item.category.name] += item.amount;
+      dateMap[date][item.category] += item.price;
     });
 
-    const categories = Array.from(new Set(data.map(item => item.category.name)));
+    const categories = Array.from(new Set(data.map(item => item.category)));
 
     const datasets = categories.map(category => ({
       label: category,
@@ -128,7 +128,7 @@ export const LineGraph = ({ data }) => {
       },
       title: {
         display: true,
-        text: 'Category-wise Price Trend for This Month',
+        text: 'Category-wise Price Over Time',
       },
     },
     scales: {

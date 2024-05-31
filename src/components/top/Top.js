@@ -1,18 +1,18 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieGraph } from '../graph/Pie';
-import KakeiboTable from '../kakeibo_Table/KakeiboTable';
+import KakeiboTable from '../kakeibo_Table/kakeiboTable';
 import CategorySelector from '../category_selector/CategorySelector';
 import { useKakeiboData } from '../../hooks/useKakeiboData';
 
 const Top = () => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
   const kakeiboData = useKakeiboData(); // 全データを取得
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   // 全データからカテゴリを抽出
   const categories = useMemo(() => {
     const categorySet = new Set();
-    kakeiboData.forEach(item => categorySet.add(item.category));
+    kakeiboData.forEach(item => categorySet.add(item.category.name));
     return Array.from(categorySet);
   }, [kakeiboData]);
 
@@ -22,7 +22,7 @@ const Top = () => {
       setFilteredData(kakeiboData);
     } else {
       setFilteredData(
-        kakeiboData.filter(item => selectedCategories.includes(item.category))
+        kakeiboData.filter(item => selectedCategories.includes(item.category.name))
       );
     }
   }, [selectedCategories, kakeiboData]);

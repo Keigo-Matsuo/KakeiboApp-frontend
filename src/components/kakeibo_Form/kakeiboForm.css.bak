@@ -36,31 +36,24 @@ h2{
 
 .content{
     display:flex;
-   	justify-content: center;
-    align-items: center;
     margin-left: 25%;
     margin-top: 2%;
     margin-bottom: 2%;
 }
 
-.content > div {
-    margin-right: 20px;
-}
 .content label{
     font-size: 1.2rem;
     font-weight: 700;
     margin-right: 5px;
 }
 
-.content input,
-.content select {
+.content input{
     font-family: "Zen Kurenaido", sans-serif;
     font-weight: 600;
     height: 40px;
     border:3px #f9d8ad solid;
     outline: none;
     border-radius: 10px;
-	padding: 5px;	
 }
 
 .date input{
@@ -96,36 +89,4 @@ h2{
     border-radius: 10px;
     display: block;
     margin: auto;
-	cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.submit:hover {
-    background-color: #e0a12c;
-}
-
-.content select {
-    appearance: none;
-    background-color: white;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23333" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"></path></svg>');
-    background-repeat: no-repeat;
-    background-position-x: 100%;
-    background-position-y: 5px;
-    padding-right: 20px;
-}
-
-.content option {
-    font-family: "Zen Kurenaido", sans-serif;
-    font-weight: 600;
-}
-
-.content a {
-    color: #FFBD3E;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.content a:hover {
-    text-decoration: underline;
 }

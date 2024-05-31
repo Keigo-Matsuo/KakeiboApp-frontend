@@ -5,8 +5,8 @@ function KakeiboTableRow({ item }) {
     <tr>
       <td>{item.id}</td>
       <td>{item.date}</td>
-      <td>{item.category}</td>
-      <td>{item.price}</td>
+      <td>{item.category.name}</td>
+      <td>{item.amount}</td>
       <td>{item.memo}</td>
     </tr>
   );

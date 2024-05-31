@@ -1,5 +1,5 @@
 import React from 'react';
-import KakeiboTableRow from './KakeiboTableRow';
+import KakeiboTableRow from './kakeiboTableRow';
 import './kakeibo.css';
 
 function KakeiboTable({ data }) {

@@ -2,10 +2,9 @@ import React from 'react';
 import { LineGraph } from '../graph/Line';
 
 const NextTargetFormView = ({ formData, handleChange, handleSubmit, kakeiboData }) => {
- console.log(kakeiboData);
   return (
     <>
-      <div className="App" style={{ width: '60%' }}>
+      <div className="App" style={{ width: '50%' }}>
         <LineGraph key={JSON.stringify(kakeiboData)} data={kakeiboData} />
       </div>
 

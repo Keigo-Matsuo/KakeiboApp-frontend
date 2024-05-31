@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import KakeiboFormView from './KakeiboFormView';
+import CategoryFormView from './CategoryFormView'; // 修正: コンポーネント名を修正
+import './categoryForm.css'; // 必要に応じてCSSをインポート
 
-const KakeiboForm = () => {
+const CategoryForm = () => {
   const [formData, setFormData] = useState({
-    amount: '',
-    date: '',
-    categoryId: '',
-    memo: ''
+    name: ''
   });
 
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -36,41 +32,29 @@ const KakeiboForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting data:', formData);
-  
     try {
-      const response = await fetch('http://localhost:8080/api/payments/new', {
+      const response = await fetch('http://localhost:8080/api/category/new', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
-  
-      console.log('Response:', response);
-  
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Server responded with an error:', errorData);
         throw new Error('Network response was not ok');
       }
-  
       setFormData({
-        amount: '',
-        date: '',
-        categoryId: '',
-        memo: ''
+        name: ''
       });
-      navigate('/home');
+      window.location.href = '/settings/category';
     } catch (error) {
       console.error('登録エラー:', error);
       alert('登録中にエラーが発生しました。');
     }
   };
-  
 
   return (
-    <KakeiboFormView
+    <CategoryFormView
       formData={formData}
       categories={categories}
       handleChange={handleChange}
@@ -79,4 +63,4 @@ const KakeiboForm = () => {
   );
 };
 
-export default KakeiboForm;
+export default CategoryForm;

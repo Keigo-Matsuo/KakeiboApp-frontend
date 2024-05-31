@@ -3,7 +3,7 @@
 
 .Sidebar {
     height: 100vh;
-    width: 220px;
+    width: 200px;
     background-color: rgb(240, 240, 52);
     position: fixed;
     top: 0;
@@ -25,8 +25,7 @@
     background-color: rgb(235, 135, 21);
 }
 
-/* .SidebarList .row */
-#title, #sub-title {
+.SidebarList .row {
     width: 100%;
     height: 60px;
     /* color: white; */
@@ -36,13 +35,7 @@
     align-items: center; */
 }
 
-#sub-title {
-    text-decoration: none;
-    color: black;
-}
-
-.SidebarList .row:hover,
-.sub-title:hover {
+.SidebarList .row:hover {
     cursor: pointer;
     background-color: rgb(235, 135, 21,0.4);
 }
